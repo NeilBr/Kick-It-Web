@@ -1,8 +1,9 @@
 ﻿body {
+    font-family: 'Roboto', sans-serif;
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: rgb(21,27,49) !important;
 }
-
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -21,4 +22,46 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.navbar {
+    background-image: linear-gradient(90deg, #252E49, #565B67) !important;
+    border:none !important; 
+    margin:0;
+}
+.navbar-collapse {
+float:right !important;
+}
+.container {
+margin:0 !important;
+}
+.dashTopRow {
+    position: absolute;
+    top: 50px !important;
+    display: flex !important;
+    height: 45% !important;
+    width: 100% !important;
+}
+.dashBotRow {
+    position: absolute;
+    top: 55% !important;
+    display: flex !important;
+    height: 45% !important;
+    width: 100% !important;
+}
+.dashTopCol {
+ border-radius:5px;
+    width: 50% !important;
+    height: 98% !important;
+    background-color: rgb(30,39,65) !important;
+    margin: 2% !important;
+}
+.dashBotCol {
+    border-radius: 5px;
+    width: 33% !important;
+    height: 98% !important;
+    margin: 2% !important;
+    background-color: rgb(30,39,65) !important;
+}
+.dashWindowHeader {
+
 }
