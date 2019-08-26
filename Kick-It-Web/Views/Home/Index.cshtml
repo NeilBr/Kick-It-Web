@@ -180,7 +180,7 @@
                         <button class="btnDash">
                             <img class="btnDashLiImg" src="~/Content/Assets/delete.PNG" />
                         </button>
-                        <button class="btnDash">
+                        <button id="openEditUser" class="btnDash">
                             <img class="btnDashLiImg" src="~/Content/Assets/edit.png" />
                         </button>
                     </div>
@@ -357,19 +357,62 @@
     <br/><br/><br />
     <button onclick="" id="saveBtn">SAVE</button>
 </div>
-<script src="~/Scripts/manageAdminUsers.js"></script>
+<script src="~/Scripts/manBL.js"></script>
+    
+
+<div id="editUser" title="EDIT USER" hidden="hidden">
+    <img id="editProfile" class="btnDashLiImg dashProfileImg" src="~/Content/Assets/profile.PNG" /> <br />
+    <input type="text" placeholder="USER NAME" />
+    <ul class="dashUl" id="ulBLChallenges">
+        <li class="dashli liReport">
+            <div class="dashliInfo">
+                List item
+            </div>
+        </li>
+        <li class="dashli liReport">
+            <div class="dashliInfo">
+                List item
+            </div>
+        </li>
+        <li class="dashli liReport">
+            <div class="dashliInfo">
+                List item
+            </div>
+        </li>
+    </ul>
+    <select name="ManBLselect" id="ManBLselect">
+        <option selected="selected">Add challenge</option>
+        <option value="climb">Climb a big rock</option>
+        <option>Sleep</option>
+        <option>Milk a cow</option>
+        <option>Grow a tree</option>
+        <option>Fly a pinkmobile</option>
+    </select>
+    <br /><br /><br />
+    <button onclick="" id="saveBtn">SAVE</button>
+</div>
+
+
 <script>
-    $(function () {
-        $("#popUpManBL").dialog({
-            autoOpen: false, modal: true, resizable: false, draggable: false
+        $(function () {
+            $("#popUpManBL").dialog({
+                autoOpen: false, modal: true, resizable: false, draggable: false
+            });
+            $("#editUser").dialog({
+                autoOpen: false, modal: true, resizable: false, draggable: false
+            });
+            $("#ManBLselect").selectmenu({
+                select: function (event, data) {
+                    selectChal(data);
+                }
+            });
+            $("#openManBL").click(function () {
+                $("#popUpManBL").dialog('open');
+            });
+            $("#openEditUser").click(function () {
+                $("#editUser").dialog('open');
+            });
         });
-        $("#ManBLselect").selectmenu({
-            select: function (event, data) {
-                selectChal(data);
-            }
-        });
-        $("#openManBL").click(function () {
-            $("#popUpManBL").dialog('open');
-        });
-    });
-</script>
+    </script>
+
+<

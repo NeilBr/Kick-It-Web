@@ -284,3 +284,8 @@ margin:15px 5px 10px 5px;
     color: rgb(195,196,200) !important;    
     background: radial-gradient(circle farthest-side at bottom left, #6A407D, #8A58C9,#D96883,#B858B3) !important;
 }
+#editProfile{
+    height:30%;
+    width:30%;
+    left:50%;
+}
