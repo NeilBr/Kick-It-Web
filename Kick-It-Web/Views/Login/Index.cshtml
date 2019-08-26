@@ -1,0 +1,60 @@
+﻿@model Kick_It_Web.Models.Adventurer
+
+@{
+    Layout = "";
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<link href="~/Content/Site.css" rel="stylesheet"
+      type="text/css" />
+<link href="~/Content/semantic.min.css" rel="stylesheet"
+      type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script src="~/Scripts/semantic.min.js"></script>
+<body>
+
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    {
+        <form >
+            <div id="loginCont">
+                <div class="loginHeader">
+                    
+                </div>
+                <div class="loginForm">
+
+                    @Html.TextBoxFor(m => m.email, new { placeholder = "Email Address", @class = "form-control" })
+
+                    @Html.ValidationMessageFor(m => m.email, "", new { @class = "error" })
+
+
+
+                    @Html.PasswordFor(m => m.password, new { placeholder = "Password", @class = "form-control" })
+
+                    @Html.ValidationMessageFor(m => m.password, "", new { @class = "error" })
+                    <input type="submit" value="Login" id="loginBtn" />
+
+                </div>
+
+            </div>
+
+
+
+
+        </form>
+    }
+
+    @if (@ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("@ViewBag.Message")
+            });
+        </script>
+    }
+</body>
+
