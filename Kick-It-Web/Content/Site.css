@@ -173,13 +173,13 @@ list-style:none !important;
     padding: 0;
     margin: 5px 5px 5px 5px;
     background: none;
-    border: none
+    border: none;
 }
 .btnDashLiImg {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    min-height: 42px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
 }
 .dashProfileImg {
 margin:15px 5px 10px 5px;
@@ -232,4 +232,41 @@ margin:15px 5px 10px 5px;
     height: 18% !important;
     background: radial-gradient(circle farthest-side at bottom left, #6A407D, #8A58C9,#D96883,#B858B3) !important;
 
+}
+#cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#popUp {
+    height: 380px;
+    width: 340px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    display: none;
+    background: url(login.png) no-repeat;
+    border: 5px solid #cccccc;
+    border-radius: 10px;
+}
+
+.cancel {
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 2px;
+    background: rgb(245,245,245);
+    color: black;
+    height: 30px;
+    width: 35px;
+    font-size: 30px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
 }
