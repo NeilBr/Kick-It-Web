@@ -88,7 +88,7 @@ float:right !important;
 }
 .dashWindowHeader {
     width: 100% !important;
-    height: 15%;
+    height: 15% !important;
     background-image: linear-gradient(90deg, #252E49, #565B67) !important;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -233,40 +233,20 @@ margin:15px 5px 10px 5px;
     background: radial-gradient(circle farthest-side at bottom left, #6A407D, #8A58C9,#D96883,#B858B3) !important;
 
 }
-#cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: 5;
-    width: 100%;
-    height: 100%;
+
+.popUp {
+    background-color: rgb(30,39,65) !important;
+    padding: 0 !important;
+}
+.popUpContent {
+    background-color: rgb(30,39,65) !important;
+    width:100% !important;
+    height:100% !important;
+}
+.ui-dialog-titlebar {
     display: none;
 }
-
-#popUp {
-    height: 380px;
-    width: 340px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 10;
-    display: none;
-    background: url(login.png) no-repeat;
-    border: 5px solid #cccccc;
-    border-radius: 10px;
-}
-
-.cancel {
-    display: block;
-    position: absolute;
-    top: 3px;
-    right: 2px;
-    background: rgb(245,245,245);
-    color: black;
-    height: 30px;
-    width: 35px;
-    font-size: 30px;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
+.ui-dialog-content {
+    background-color: rgb(30,39,65) !important;
+    width:100%;
 }

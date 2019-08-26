@@ -325,15 +325,25 @@
 <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
-<div id="dialog1" title="Dialog Title" hidden="hidden">I'm a dialog</div>
+<div id="popUpReviewSuggestions"hidden="hidden">
+  
+        <div class="dashWindowHeader">
+            <h2>Manage Bucketlists</h2>
+        </div>
+   
+</div>
 <script>
     $(function () {
-        $("#dialog1").dialog({
-            autoOpen: false
+        $("#popUpReviewSuggestions").dialog({
+            autoOpen: true,
+            resizable: false,
+            draggable: false,          
+            modal: true,
+            dialogClass: "popUp"
         });
 
         $("#opener").click(function () {
-            $("#dialog1").dialog('open');
+            $("#popUpReviewSuggestions").dialog('open');
         });
     });
 </script>
