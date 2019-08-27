@@ -180,7 +180,7 @@
                         <button class="btnDash">
                             <img class="btnDashLiImg" src="~/Content/Assets/delete.PNG" />
                         </button>
-                        <button class="btnDash">
+                        <button id="openEditUser" class="btnDash">
                             <img class="btnDashLiImg" src="~/Content/Assets/edit.png" />
                         </button>
                     </div>
@@ -329,13 +329,13 @@
 
 <div id="popUpManBL" hidden="hidden">
     <div class="dashPopupHeader">
-        <h1>CREATE BUCKETLIST</h1>  
+        <h1>CREATE BUCKETLIST</h1>
         <button class="btnDash btnHead" id="closeManBL"><img class="btnPopImg" src="~/Content/Assets/buttonX.png" /></button>
     </div>
     <div class="dashPopupWindow">
         <input class="popupEdtText" type="text" placeholder="BUCKETLIST NAME" />
-        <div class="popupList"> <ul class="dashUl" id="ulBLChallenges"></ul></div><br/>
-       
+        <div class="popupList"> <ul class="dashUl" id="ulBLChallenges"></ul></div><br />
+
         <select class="dashSelect" name="ManBLselect" id="ManBLselect">
             <option selected="selected">Add challenge</option>
             <option value="Climb">Climb a big rock</option>
@@ -356,8 +356,8 @@
     <div class="dashPopupWindow">
 
         <label class="popUpLabel">Challenge Name:</label>
-        <label  class="popUpLabel">Challenge Description:</label>
-        <label  class="popUpLabel">Other Details:</label>
+        <label class="popUpLabel">Challenge Description:</label>
+        <label class="popUpLabel">Other Details:</label>
 
         <div class="dashPopupActions">
             <button class="btnDash">
@@ -369,51 +369,80 @@
 
         </div>
     </div>
+</div>
+<div id="editUser" hidden="hidden">
+    <div class="dashPopupHeader">
+        <h1>EDIT PROFILE</h1>
+        <button class="btnDash btnHead" id="closeEditUser"><img class="btnPopImg" src="~/Content/Assets/buttonX.png" /></button>
     </div>
-    <script src="~/Scripts/manBL.js"></script>
-    <script type="text/javascript">
-        $("#popUpManBL").dialog({
-            autoOpen: false,
-            modal: true,
-            resizable: false,
-            draggable: false
-        });
-        $("#ManBLselect").selectmenu({
-            select: function (event, data) {
-                selectChal(data);
-                data.item.remove;
-            }
-        });
-        $("#openManBL").click(function () {
+    <div class="dashPopupWindow">
+        <input class="popupEdtText" type="text" placeholder="FIRST NAME" />
 
-            $("#popUpManBL").dialog('open');
-        })
+        <input class="popupEdtText" type="text" placeholder="SURNAME" />
+        <input class="popupEdtText" type="text" placeholder="USERNAME" />
+        <input class="popupEdtText" type="text" placeholder="CONTACT" />
 
-        $("#popUpReviewSuggestions").dialog({
-            autoOpen: false,
-            resizable: false,
-            draggable: false,
-            modal: true,
-            dialogClass: "popUp"
-        });
-        $("#closeManBL").click(function () {
-            $("#popUpManBL").dialog('close');
-        });
-
-        //COMMENT THIS OUT OR DELETE ONCE SAVE IS WORKING
-        $("#saveBtn").click(function () {
-            $("#popUpManBL").dialog('close');
-        });
-
-
-        $("#openSuggestion").click(function () {
-            $("#popUpReviewSuggestions").dialog('open');
-        });
-        $("#closeReview").click(function () {
-            $("#popUpReviewSuggestions").dialog('close');
-        });
-
-    </script>
+        <label class="popUpLabel">Admin</label><br />
+        <input type="checkbox" /><br />
+        <label class="popUpLabel">Enabled</label><br />
+        <input type="checkbox" />
 
 
 
+
+        <button onclick="" id="saveBtn">UPDATE</button>
+    </div>
+</div>
+
+<script src="~/Scripts/manBL.js"></script>
+<script type="text/javascript">
+    $("#popUpManBL").dialog({
+        autoOpen: false,
+        modal: true,
+        resizable: false,
+        draggable: false
+    });
+    $("#ManBLselect").selectmenu({
+        select: function (event, data) {
+            selectChal(data);
+            data.item.remove;
+        }
+    });
+    $("#openManBL").click(function () {
+
+        $("#popUpManBL").dialog('open');
+    })
+
+    $("#popUpReviewSuggestions").dialog({
+        autoOpen: false,
+        resizable: false,
+        draggable: false,
+        modal: true,
+        dialogClass: "popUp"
+    });
+    $("#closeManBL").click(function () {
+        $("#popUpManBL").dialog('close');
+    });
+
+    //COMMENT THIS OUT OR DELETE ONCE SAVE IS WORKING
+    $("#saveBtn").click(function () {
+        $("#popUpManBL").dialog('close');
+    });
+
+
+    $("#openSuggestion").click(function () {
+        $("#popUpReviewSuggestions").dialog('open');
+    });
+    $("#closeReview").click(function () {
+        $("#popUpReviewSuggestions").dialog('close');
+    });
+    $("#editUser").dialog({
+        autoOpen: false, modal: true, resizable: false, draggable: false
+    });
+    $("#openEditUser").click(function () {
+        $("#editUser").dialog('open');
+    });
+    $("#closeEditUser").click(function () {
+        $("#editUser").dialog('close');
+    });
+</script>
