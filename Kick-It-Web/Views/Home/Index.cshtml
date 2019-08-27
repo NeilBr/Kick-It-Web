@@ -97,7 +97,7 @@
                         <button class="btnDash">
                             <img class="btnDashLiImg" src="~/Content/Assets/buttonX.png" />
                         </button>
-                        <button class="btnDash">
+                        <button id="openSuggestion" class="btnDash">
                             <img class="btnDashLiImg" src="~/Content/Assets/buttonAdd.png" />
                         </button>
 
@@ -308,7 +308,7 @@
                         Name and stuff HERE
                     </div>
                     <div class="dashliActions">
-                        <button id="opener" class="btnDash">
+                        <button class="btnDash">
                             <img class="btnDashLiImg" src="~/Content/Assets/delete.PNG" />
                         </button>
                         <button class="btnDash">
@@ -326,57 +326,94 @@
 <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
-<div id="dialog1" title="Dialog Title" hidden="hidden">I'm a dialog</div>
-<script>
-    $(function () {
-        $("#dialog1").dialog({
-            autoOpen: false
-        });
 
-        $("#opener").click(function () {
-            $("#dialog1").dialog('open');
+<div id="popUpManBL" hidden="hidden">
+    <div class="dashPopupHeader">
+        <h1>CREATE BUCKETLIST</h1>  
+        <button class="btnDash btnHead" id="closeManBL"><img class="btnPopImg" src="~/Content/Assets/buttonX.png" /></button>
+    </div>
+    <div class="dashPopupWindow">
+        <input class="popupEdtText" type="text" placeholder="BUCKETLIST NAME" />
+        <div class="popupList"> <ul class="dashUl" id="ulBLChallenges"></ul></div><br/>
+       
+        <select class="dashSelect" name="ManBLselect" id="ManBLselect">
+            <option selected="selected">Add challenge</option>
+            <option value="Climb">Climb a big rock</option>
+            <option value="Sleep">Sleep</option>
+            <option value="Milk a cow">Milk a cow</option>
+            <option value="Grow a tree">Grow a tree</option>
+            <option value="Fly a pinkmobile">Fly a pinkmobile</option>
+        </select>
+        <button onclick="" id="saveBtn">SAVE</button>
+    </div>
+</div>
+<div id="popUpReviewSuggestions" hidden="hidden">
+
+    <div class="dashPopupHeader">
+        <h1>REVIEW SUGGESTIONS</h1>
+        <button class="btnDash btnHead" id="closeReview"><img class="btnPopImg" src="~/Content/Assets/buttonX.png" /></button>
+    </div>
+    <div class="dashPopupWindow">
+
+        <label class="popUpLabel">Challenge Name:</label>
+        <label  class="popUpLabel">Challenge Description:</label>
+        <label  class="popUpLabel">Other Details:</label>
+
+        <div class="dashPopupActions">
+            <button class="btnDash">
+                <img class="btnDashPopImg" src="~/Content/Assets/buttonX.png" />
+            </button>
+            <button class="btnDash">
+                <img class="btnDashPopImg" src="~/Content/Assets/buttonAdd.png" />
+            </button>
+
+        </div>
+    </div>
+    </div>
+    <script src="~/Scripts/manBL.js"></script>
+    <script type="text/javascript">
+        $("#popUpManBL").dialog({
+            autoOpen: false,
+            modal: true,
+            resizable: false,
+            draggable: false
+        });
+        $("#ManBLselect").selectmenu({
+            select: function (event, data) {
+                selectChal(data);
+                data.item.remove;
+            }
         });
         $("#openManBL").click(function () {
+
             $("#popUpManBL").dialog('open');
+        })
+
+        $("#popUpReviewSuggestions").dialog({
+            autoOpen: false,
+            resizable: false,
+            draggable: false,
+            modal: true,
+            dialogClass: "popUp"
         });
-    });
-</script>
-
-<div id="popUpManBL"  title="Create Bucket List" hidden="hidden">
-    <input type="text" placeholder="BUCKETLIST NAME" />
-    <ul class="dashUl" id="ulBLChallenges">
-        <li class="dashli liReport">            
-            <div class="dashliInfo">
-                List item
-            </div>            
-        </li>
-        <li class="dashli liReport">            
-            <div class="dashliInfo">
-                List item
-            </div>            
-        </li>
-        <li class="dashli liReport">           
-            <div class="dashliInfo">
-                List item
-            </div>            
-        </li>
-    </ul>
-    <select name="ManBLselect" id="ManBLselect">
-        <option selected="selected">Add challenge</option>
-        <option value="climb">Climb a big rock</option>
-        <option>Sleep</option>
-        <option>Milk a cow</option>
-        <option>Grow a tree</option>
-        <option>Fly a pinkmobile</option>
-    </select>
-    <br/><br/><br />
-    <button onclick="" id="saveBtn">SAVE</button>
-</div>
-<script src="~/Scripts/manageAdminUsers.js"></script>
-            <h2>Manage Bucketlists</h2>
-        $("#popUpManBL").dialog({
-            autoOpen: false, modal: true, resizable: false, draggable: false
-        $("#ManBLselect").selectmenu({
-            select: function (event, data) {
-                selectChal(data);
-            }
+        $("#closeManBL").click(function () {
+            $("#popUpManBL").dialog('close');
+        });
+
+        //COMMENT THIS OUT OR DELETE ONCE SAVE IS WORKING
+        $("#saveBtn").click(function () {
+            $("#popUpManBL").dialog('close');
+        });
+
+
+        $("#openSuggestion").click(function () {
+            $("#popUpReviewSuggestions").dialog('open');
+        });
+        $("#closeReview").click(function () {
+            $("#popUpReviewSuggestions").dialog('close');
+        });
+
+    </script>
+
+
+

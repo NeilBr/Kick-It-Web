@@ -18,6 +18,16 @@
 .dl-horizontal dt {
     white-space: normal;
 }
+h1 {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 20px !important;
+    position: absolute !important;
+    top: 13%;
+    color: rgb(195,196,200) !important;
+    margin-left: 15px !important;
+    top: auto !important;
+    padding-top: 10px !important;
+}
 h2 {
     font-family: 'Roboto', sans-serif !important;
     font-size: medium !important;
@@ -45,6 +55,7 @@ float:right !important;
 }
 .container {
 margin:0 !important;
+width:100% !important;
 }
 .fl {
 float:left!important;
@@ -178,6 +189,12 @@ list-style:none !important;
 .btnHead{
     float: right;
 }
+.btnPopImg {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+}
 .btnDashLiImg {
     width: 22px;
     height: 22px;
@@ -236,7 +253,9 @@ margin:15px 5px 10px 5px;
     background: radial-gradient(circle farthest-side at bottom left, #6A407D, #8A58C9,#D96883,#B858B3) !important;
 
 }
-
+.ui-selectmenu-button{
+    width:80% !important;
+}
 .popUp {
     background-color: rgb(30,39,65) !important;
     padding: 0 !important;
@@ -246,21 +265,93 @@ margin:15px 5px 10px 5px;
     width:100% !important;
     height:100% !important;
 }
+.ui-dialog {
+    padding: 0 !important;
+    border: 0 !important;
+    width: 30% !important;
+    height: 70% !important;
+}
 .ui-dialog-titlebar {
     display: none;
 }
 .ui-dialog-content {
-    background-color: rgb(30,39,65) !important;
-    width:100%;
+    background-color: rgb(21,27,49) !important;
+    width: 100%;
+    height: 100% !important;
+    padding: 0 !important;
+}
+.closeBtn {
 }
 #saveBtn {
+    top:90%;
     left: 30%;
     position: absolute;
     border: none;
     font-size: 15px;
     border-radius: 3px;
     width: 40%;
-    height:10%;
+    height:7%;
     color: rgb(195,196,200) !important;    
     background: radial-gradient(circle farthest-side at bottom left, #6A407D, #8A58C9,#D96883,#B858B3) !important;
+}
+.dashPopupHeader {
+    width: 100% !important;
+    height: 15% !important;
+    background-image: linear-gradient(90deg, #252E49, #565B67) !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+   
+}
+
+.dashPopupWindow {
+margin:10px !important;
+}
+.popupEdtText {
+    display: inline-block !important;
+    height: 5% !important;
+    width: 70% !important;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: black !important;
+    background-color: rgb(195,196,200) !important;
+    margin: 0;
+    margin-bottom: 5% !important;
+}
+.popupList {
+    position:absolute !important;
+    max-height:65% !important;
+    overflow:scroll !important;
+    height:45% !important;
+    width:95% !important;
+}
+.ui-selectmenu-button {
+    top:75% !important;
+    position:absolute !important;
+}
+.dashPopupli {
+    background-color: rgb(30,39,65) !important;
+    border-style: solid;
+    border-color: rgb(15,27,49);
+    border-width: 0px 0px 1px 0px;
+}
+.popUpLabel {
+    color: rgb(195,196,200) !important;
+    width: 50%;
+    flex: 2;
+    padding: 30px 20px 10px 10px;
+    overflow: no-display;
+}
+.dashPopupActions {
+    top: 85%;
+    left: 37%;
+    position: absolute;
+    border: none;
+    padding:10px;
+}
+.btnDashPopImg {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
 }

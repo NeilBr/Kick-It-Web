@@ -24,9 +24,14 @@ namespace Kick_It_Web.Controllers
 
             user = userent.ValidateUser(user.email, user.password);
 
-
-            return RedirectToAction("Index", "Home");
           
+            return RedirectToRoute(new
+            {
+                controller = "Admin",
+                action = "Index",
+                id = user.email
+            });
+
         }
 
         [HttpPost]
