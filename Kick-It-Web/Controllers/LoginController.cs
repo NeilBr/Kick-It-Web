@@ -1,4 +1,5 @@
 ﻿using Kick_It_Web.Models;
+using Kick_It_Web.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +22,8 @@ namespace Kick_It_Web.Controllers
         public ActionResult Login(Adventurer user)
         {
             UserENT userent = new UserENT();
-
-            user = userent.ValidateUser(user.email, user.password);
+           
+           Adventurer validatedUser = userent.ValidateUser(user.email, user.password);
 
           
             return RedirectToRoute(new

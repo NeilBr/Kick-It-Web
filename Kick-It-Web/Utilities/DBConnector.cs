@@ -20,13 +20,14 @@ namespace Kick_It_Web.Utilities
 
         public void Connect()
         {
-            connection = new MySqlConnection("Server=localhost;Database=KICK-IT;Uid=root;Pwd=loserforce4;");
+            connection = new MySqlConnection("Server=kickit-db.cqqbwmmosjza.eu-west-1.rds.amazonaws.com;Database=kickit;Uid=kickitadmin;Pwd=kickitwrr302;");
             command = connection.CreateCommand();
         }
 
         public Adventurer checkUser(String email, String pword) {
+            Connect();
             connection.Open(); 
-            command.CommandText = "SELECT * FROM Adventurers WHERE email = " +email +" AND password = " + pword + ";";
+            command.CommandText = "SELECT * FROM adventurers WHERE adv_email = '" +email +"' AND adv_password = '" + pword + "';";
 
           MySqlDataReader reader = command.ExecuteReader();
             if (reader.HasRows)
