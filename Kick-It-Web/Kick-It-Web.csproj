@@ -145,6 +145,7 @@
     <Compile Include="Models\bucketlist.cs" />
     <Compile Include="Models\bucketlistchallenges.cs" />
     <Compile Include="Models\challenge.cs" />
+    <Compile Include="Models\Report.cs" />
     <Compile Include="Models\UserENT.cs" />
     <Compile Include="Models\friend.cs" />
     <Compile Include="Models\goldenboot.cs" />

@@ -28,7 +28,7 @@ namespace Kick_It_Web.Controllers
           
             return RedirectToRoute(new
             {
-                controller = "Admin",
+                controller = "Home",
                 action = "Index",
                 id = user.email
             });
