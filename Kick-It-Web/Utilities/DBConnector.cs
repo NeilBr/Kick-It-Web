@@ -31,13 +31,13 @@ namespace Kick_It_Web.Utilities
                 command.CommandText = "SELECT * FROM adventurers WHERE adv_email = '" +email +"' AND adv_password = '" + pword + "';";
 
           MySqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows)
+            if (reader.Read())
             {
                 Adventurer user = new Adventurer();
                 //Create adventurer here
-                reader.Read();
-                user.email = reader.GetString(1);
-                user.id = reader.GetInt16(0);
+                
+                user.adv_email = reader.GetString(1);
+                user.adv_id = reader.GetInt16(0);
                 connection.Close();
                 return user;
             }
@@ -81,6 +81,33 @@ namespace Kick_It_Web.Utilities
             connection.Close();
             return repList;
 
+
+        }
+
+        public List<ChallengeSuggestion> challenges() {
+            MySqlConnection connection = Connect();
+            MySqlCommand command = connection.CreateCommand();
+            connection.Open();
+            command.CommandText = "SELECT * FROM challenges WHERE c_status = 0 ;";
+
+            List<ChallengeSuggestion> challList = new List<ChallengeSuggestion>();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+
+                ChallengeSuggestion curChall = new ChallengeSuggestion();
+
+                curChall.c_id = (int)reader["c_id"];
+                curChall.c_points = (int)reader["c_points"];
+                curChall.c_name = (string)reader["c_name"];
+                curChall.c_description = (string)reader["c_description"];
+                curChall.c_price= (double)reader["c_price"];
+                curChall.c_status = (bool)reader["c_status"];
+        
+                challList.Add(curChall);
+            }
+            connection.Close();
+            return challList;
 
         }
     }

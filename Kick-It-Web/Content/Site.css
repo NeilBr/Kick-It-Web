@@ -355,3 +355,9 @@ margin:10px !important;
     min-width: 42px;
     min-height: 42px;
 }
+.btnImgX {
+    content: url(Assets/buttonX.png);
+}
+.btnImgAdd {
+    content: url(Assets/buttonAdd.png );
+        }

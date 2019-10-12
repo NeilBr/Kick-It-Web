@@ -140,11 +140,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\adventurer.cs" />
+    <Compile Include="Models\Adventurer.cs" />
     <Compile Include="Models\adventurerchallengecomplete.cs" />
     <Compile Include="Models\bucketlist.cs" />
     <Compile Include="Models\bucketlistchallenges.cs" />
     <Compile Include="Models\challenge.cs" />
+    <Compile Include="Models\ChallengeSuggestion.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\UserENT.cs" />
     <Compile Include="Models\friend.cs" />

@@ -9,9 +9,9 @@ namespace Kick_It_Web.Models
     {
 
         int rep_id;
-        int adv_id;
-        int p_id;
-        string rep_reason;
+        int adv_id { get; set; }
+        int p_id { get; set; }
+        string rep_reason { get; set; }
 
         public Report(int rid , int aid, int pid, string  reason) {
             this.rep_id = rid;
@@ -20,5 +20,12 @@ namespace Kick_It_Web.Models
             this.rep_reason = reason;
         }
 
+        public string toJSON() {
+
+            return "{ "  + "\"rep_id\": " + rep_id + "," +
+                         "\"adv_id\": " + adv_id + "," +
+                          "\"p_id\": " + p_id + "," +
+                           "\"rep_reason\": \"" + rep_reason + "\" }";
+        }
     }
 }
