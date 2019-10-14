@@ -19,18 +19,20 @@ namespace Kick_It_Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(Adventurer user)
-        {
+        public ActionResult Login(){
+            string email = Request.Form["loginEmail"];
+            string password = Request.Form["loginPassword"];
+
             UserENT userent = new UserENT();
            
-           Adventurer validatedUser = userent.ValidateUser(user.email, user.password);
+           Adventurer validatedUser = userent.ValidateUser(email, password);
 
-          
+           Session["Name"] = validatedUser.adv_firstname + " " + validatedUser.adv_surname;
             return RedirectToRoute(new
             {
                 controller = "Home",
-                action = "Index",
-                id = user.email
+                action = "Index"
+              
             });
 
         }
@@ -39,6 +41,7 @@ namespace Kick_It_Web.Controllers
         [Authorize]
         public ActionResult Logout()
         {
+            Session.Clear();
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }

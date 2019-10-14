@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Configuration;
+using System.Web.Security;
 
 namespace Kick_It_Web.Controllers
 {
@@ -11,7 +12,12 @@ namespace Kick_It_Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (Session["Name"] != null)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Index","Login");
         }
         
         public string Reports() {
@@ -23,11 +29,11 @@ namespace Kick_It_Web.Controllers
             {
                 if (repList.Count - 1 != repList.IndexOf(r))
                 {
-                    json += r.toJSON() + ",";
+                    json += Newtonsoft.Json.JsonConvert.SerializeObject(r) + ",";
                 }
                 else
                 {
-                    json += r.toJSON();
+                    json += Newtonsoft.Json.JsonConvert.SerializeObject(r) ;
                 }
 
 
@@ -66,12 +72,11 @@ namespace Kick_It_Web.Controllers
             return js.Serialize(json);
 
         }
-
-        public string Users()
+        public string getChallenges()
         {
 
             DBConnector dbCon = new DBConnector();
-            List<ChallengeSuggestion> challList = dbCon.challenges();
+            List<ChallengeSuggestion> challList = dbCon.getChallenges();
             string json = "[";
             foreach (ChallengeSuggestion c in challList)
             {
@@ -84,6 +89,61 @@ namespace Kick_It_Web.Controllers
                 else
                 {
                     json += Newtonsoft.Json.JsonConvert.SerializeObject(c);
+                }
+
+
+            }
+            json += "]";
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize(json);
+
+        }
+
+        public string Users()
+        {
+
+            DBConnector dbCon = new DBConnector();
+            List<Adventurer> advList = dbCon.getAdventurers();
+            string json = "[";
+            foreach (Adventurer a in advList)
+            {
+
+
+                if (advList.Count - 1 != advList.IndexOf(a))
+                {
+                    json += Newtonsoft.Json.JsonConvert.SerializeObject(a) + ",";
+                }
+                else
+                {
+                    json += Newtonsoft.Json.JsonConvert.SerializeObject(a);
+                }
+
+
+            }
+            json += "]";
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return js.Serialize(json);
+
+        }
+        public string getBucketlists()
+        {
+
+            DBConnector dbCon = new DBConnector();
+            List<Bucketlist> blList = dbCon.getBucketLists();
+            string json = "[";
+            foreach (Bucketlist bl in blList)
+            {
+
+
+                if (blList.Count - 1 != blList.IndexOf(bl))
+                {
+                    json += Newtonsoft.Json.JsonConvert.SerializeObject(bl) + ",";
+                }
+                else
+                {
+                    json += Newtonsoft.Json.JsonConvert.SerializeObject(bl);
                 }
 
 

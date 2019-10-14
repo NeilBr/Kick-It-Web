@@ -19,13 +19,5 @@ namespace Kick_It_Web.Models
             this.p_id = pid;
             this.rep_reason = reason;
         }
-
-        public string toJSON() {
-
-            return "{ "  + "\"rep_id\": " + rep_id + "," +
-                         "\"adv_id\": " + adv_id + "," +
-                          "\"p_id\": " + p_id + "," +
-                           "\"rep_reason\": \"" + rep_reason + "\" }";
-        }
     }
 }

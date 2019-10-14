@@ -19,9 +19,5 @@ namespace Kick_It_Web.Models
         public ChallengeSuggestion() {
             
         }
-        public string toJSON() {
-            return "";
-
-        }
     }
 }

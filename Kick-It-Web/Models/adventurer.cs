@@ -7,7 +7,7 @@ namespace Kick_It_Web.Models
 {
     public class Adventurer
     {        
-        public int adv_id;
+        public double adv_id;
         public string adv_firstname, adv_surname, adv_email, adv_telephone, adv_password, adv_profilepic;
         public double adv_totalPoints;
         public bool adv_active, adv_admin;

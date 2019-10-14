@@ -32,7 +32,7 @@
            
            
             <div class="navbar-collapse collapse">
-                <div> <h1 style="left:80%">Welcome, @ViewBag.name</h1></div>
+                <div> <h1 style="left:80%">Welcome, @Session["Name"] </h1></div>
                 <ul class="nav navbar-nav">
 
                     <li>@Html.ActionLink("Logout", "Index", "Login")</li>

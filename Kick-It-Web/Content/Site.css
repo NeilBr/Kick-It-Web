@@ -173,6 +173,7 @@ list-style:none !important;
     flex: 2;
     padding: 30px 20px 10px 10px;
     overflow:no-display;
+    font-size:larger;
 }
 .dashliActions {
     padding-top:10px;
@@ -361,3 +362,15 @@ margin:10px !important;
 .btnImgAdd {
     content: url(Assets/buttonAdd.png );
         }
+.btnImgEdit {
+    content: url(Assets/edit.PNG );
+}
+.btnImgDelete {
+    content: url(Assets/delete.PNG );
+}
+.btnImgProfile {
+    content: url(Assets/profile.PNG );
+    width:40px;
+    height:32px;
+    padding-right:10px;
+}
