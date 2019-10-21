@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -29,11 +29,13 @@
                 </button>
                 @Html.ActionLink("Admin Dashboard", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+           
+           
             <div class="navbar-collapse collapse">
+                <div> <h1 style="left:80%">Welcome, @Session["Name"] </h1></div>
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    <li>@Html.ActionLink("Logout", "Index", "Login")</li>
                 </ul>
             </div>
         </div>
@@ -41,7 +43,7 @@
    
         @RenderBody()    
    
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

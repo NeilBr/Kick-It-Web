@@ -18,33 +18,20 @@
 <script src="~/Scripts/semantic.min.js"></script>
 <body>
 
-    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-    {
-        <form >
+  
+        <form action="login/login" method="post" >
             <div id="loginCont">
                 <div class="loginHeader">
-                    
                 </div>
                 <div class="loginForm">
-
-                    @Html.TextBoxFor(m => m.email, new { placeholder = "Email Address", @class = "form-control" })
-
-                    @Html.ValidationMessageFor(m => m.email, "", new { @class = "error" })
-
-
-
-                    @Html.PasswordFor(m => m.password, new { placeholder = "Password", @class = "form-control" })
-
-                    @Html.ValidationMessageFor(m => m.password, "", new { @class = "error" })
+                    <input id="loginEmail" class="form-control" placeholder="Email Address" name="loginEmail" type="email" runat="server"/>
+                    <br/>
+                   <input id="loginPassword" class="form-control" placeholder="Password" name="loginPassword" type="password" runat="server" />
+                    <br/>
                     <input type="submit" value="Login" id="loginBtn" />
-
+                    <br/>
                 </div>
-
             </div>
-
-
-
-
         </form>
     }
 

@@ -1,4 +1,5 @@
 ﻿using Kick_It_Web.Models;
+using Kick_It_Web.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,21 +19,29 @@ namespace Kick_It_Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(Adventurer user)
-        {
+        public ActionResult Login(){
+            string email = Request.Form["loginEmail"];
+            string password = Request.Form["loginPassword"];
+
             UserENT userent = new UserENT();
+           
+           Adventurer validatedUser = userent.ValidateUser(email, password);
 
-            user = userent.ValidateUser(user.email, user.password);
+           Session["Name"] = validatedUser.adv_firstname + " " + validatedUser.adv_surname;
+            return RedirectToRoute(new
+            {
+                controller = "Home",
+                action = "Index"
+              
+            });
 
-
-            return RedirectToAction("Index", "Home");
-          
         }
 
         [HttpPost]
         [Authorize]
         public ActionResult Logout()
         {
+            Session.Clear();
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }
