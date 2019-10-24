@@ -236,23 +236,30 @@ function openReviewReport(rid) {
 function updateUser(userId) {
     var admin = 0;
     var active = 0;
-    if ($("#advAdmin").val() == "on") { admin = 1; } 
-    if ($("#advActive").val() == "on") { active = 1; }
+    if ($("#advAdmin").val() == "on") { admin = '1'; } 
+    if ($("#advActive").val() == "on") { active = '1'; }
     var myData = {
-        adv_id: userId,
+        //adv_id: userId,
+        //adv_firstName: $("#advFName").text(),
+        //adv_surname: $("#advSName").text(),
+        //adv_email: $("#advEmail").text(),
+        //adv_telephone: $("#advContact").text(),
+        //adv_admin: admin,
+        //adv_active: active
+        // adv_id: userId,
         adv_firstName: $("#advFName").val(),
         adv_surname: $("#advSName").val(),
         adv_email: $("#advEmail").val(),
         adv_telephone: $("#advContact").val(),
-        adv_admin: admin ,
-       adv_active: active
+        adv_admin: admin,
+        adv_active: active
     }
 
     $.ajax({
         type: 'POST',
         async: true,
-        url: '/Home/updateUser',
-        data: JSON.stringify({ adventurer: myData }),
+        url: '/Home/updateUser/' + userId,
+        data: JSON.stringify( myData ),
         contentType: 'application/json',
         success: function (data) {
             alert("User Created!");

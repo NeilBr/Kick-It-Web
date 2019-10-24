@@ -160,6 +160,13 @@ namespace Kick_It_Web.Controllers
             return js.Serialize(json);
 
         }
+        [HttpPost]
+        public ActionResult updateUser(string adv_firstName,string adv_email,string adv_surname,string adv_active,string adv_admin,string adv_telephone)
+        {
+            string adv_id = Url.RequestContext.RouteData.Values["id"].ToString();
+
+            return null;
+        }
 
         public string deleteUser() {
 
