@@ -212,8 +212,8 @@ function openEditUser(userId) {
             if (data.adv_active) {
                 userDetails += 'checked';
             }
-            userDetails +=  '/> <span class="slider round"></span></label >'
-                + ' <button onclick="" id="saveBtn" onclick="updateUser(' + userId + ')">UPDATE</button>'
+            userDetails += '/> <span class="slider round"></span></label >'
+                + ' <button onclick="updateUser(' + userId + ')" id="saveBtn" onclick="updateUser(' + userId + ')">UPDATE</button>'
 
             $("#userPopupWindow").html(userDetails);
 
@@ -230,8 +230,37 @@ function openEditUser(userId) {
 
 
 function openReviewReport(rid) {
-
-
-
     $("#popUpReport").dialog('open');
+}
+
+function updateUser(userId) {
+    var admin = 0;
+    var active = 0;
+    if ($("#advAdmin").val() == "on") { admin = 1; } 
+    if ($("#advActive").val() == "on") { active = 1; }
+    var myData = {
+        adv_id: userId,
+        adv_firstName: $("#advFName").val(),
+        adv_surname: $("#advSName").val(),
+        adv_email: $("#advEmail").val(),
+        adv_telephone: $("#advContact").val(),
+        adv_admin: admin ,
+       adv_active: active
+    }
+
+    $.ajax({
+        type: 'POST',
+        async: true,
+        url: '/Home/updateUser',
+        data: JSON.stringify({ adventurer: myData }),
+        contentType: 'application/json',
+        success: function (data) {
+            alert("User Created!");
+        },
+        error: function (err) {
+            alert("error creating user- " + err);
+        }
+    });
+
+
 }
