@@ -8,10 +8,10 @@ namespace Kick_It_Web.Models
     public class Report
     {
 
-        int rep_id;
-        int adv_id { get; set; }
-        int p_id { get; set; }
-        string rep_reason { get; set; }
+      public  int rep_id { get; set; }
+      public  int adv_id { get; set; }
+        public int p_id { get; set; }
+        public string rep_reason { get; set; }
 
         public Report(int rid , int aid, int pid, string  reason) {
             this.rep_id = rid;

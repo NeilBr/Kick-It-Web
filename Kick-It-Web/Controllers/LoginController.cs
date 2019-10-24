@@ -37,13 +37,18 @@ namespace Kick_It_Web.Controllers
 
         }
 
-        [HttpPost]
-        [Authorize]
+       
         public ActionResult Logout()
         {
             Session.Clear();
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index");
+            return RedirectToRoute(new
+            {
+                controller = "Login",
+                action = "Index"
+
+            });
+
         }
     }
 }

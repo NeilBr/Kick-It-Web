@@ -5,6 +5,12 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Configuration;
 using System.Web.Security;
+using Amazon.S3.Model;
+using System.Threading.Tasks;
+using System;
+using System.IO;
+using Amazon.S3;
+using System.Drawing;
 
 namespace Kick_It_Web.Controllers
 {
@@ -154,5 +160,60 @@ namespace Kick_It_Web.Controllers
             return js.Serialize(json);
 
         }
+
+        public string deleteUser() {
+
+            string adv_id = Url.RequestContext.RouteData.Values["id"].ToString();
+
+            DBConnector dbCon = new DBConnector();
+            dbCon.deleteUser(adv_id);
+
+            return "done";
+        }
+
+        public string getUser()
+        {
+            string adv_id = Url.RequestContext.RouteData.Values["id"].ToString();
+            DBConnector dbCon = new DBConnector();
+
+            Adventurer adv = dbCon.getAdventurer(adv_id);
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(adv);
+
+        }
+
+        public Image getS3Pic()
+        {
+            IAmazonS3 client;
+            string responseBody = "";
+
+            using (client = new AmazonS3Client(Amazon.RegionEndpoint.USEast1))
+            {
+                GetObjectRequest request = new GetObjectRequest
+                {
+                    BucketName = "   ",
+                    Key = "  "
+                };
+
+                using (GetObjectResponse response = client.GetObject(request))
+                using (Stream responseStream = response.ResponseStream)
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    string title = response.Metadata["x-amz-meta-title"];
+                    Console.WriteLine("The object's title is {0}", title);
+
+                    responseBody = reader.ReadToEnd();
+                }
+            }
+            if (String.IsNullOrWhiteSpace(responseBody))
+                return null;
+
+            var bytes = Convert.FromBase64String(responseBody);
+            var stream = new MemoryStream(bytes);
+            return Image.FromStream(stream);
+        }
+    
+
     }
+
 }

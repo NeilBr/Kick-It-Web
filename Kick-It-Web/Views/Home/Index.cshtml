@@ -15,6 +15,7 @@
     <div class="dashConsole dashTopCol fr frt">
         <div class="dashWindowHeader">
             <h2>Challenge Suggestions</h2>
+            <button class="btnDash btnHead" id="openSuggestion"><img class="btnDashLiImg" src="~/Content/Assets/buttonAdd.png" /></button>
         </div>
         <div id="challengeWindow" class="dashWindowBody">
             <img src="https://media.giphy.com/media/QvH4uLw6QfrtE5BxXr/giphy.gif" style=" width:20%; height:20%; left: 40%; position:inherit; margin:auto; top:40%;" />
@@ -26,6 +27,7 @@
     <div class="dashConsole dashBotCol fl flb">
         <div class="dashWindowHeader">
             <h2>Manage Users</h2>
+            <button class="btnDash btnHead" id="openEditUser"><img class="btnDashLiImg" src="~/Content/Assets/buttonAdd.png" /></button>
         </div>
         <div id="userWindow" class="dashWindowBody">
        
@@ -59,28 +61,33 @@
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 
+<div id="popUpReport" hidden="hidden">
+    <div class="dashPopupHeader">
+        <h1>VIEW REPORT</h1>
+        <button class="btnDash btnHead" id="closeReport"><img class="btnPopImg" src="~/Content/Assets/buttonX.png" /></button>
+    </div>
+    <div class="dashPopupWindow">
+      
+    </div>
+</div>
+
+
 <div id="popUpManBL" hidden="hidden">
     <div class="dashPopupHeader">
         <h1>CREATE BUCKETLIST</h1>
         <button class="btnDash btnHead" id="closeManBL"><img class="btnPopImg" src="~/Content/Assets/buttonX.png" /></button>
     </div>
     <div class="dashPopupWindow">
-        <input class="popupEdtText" type="text" placeholder="BUCKETLIST NAME" />
+        <label class="popUpLabel">Bucketlist Name:</label>
+        <input id="manBlName" class="popupEdtText" type="text" placeholder="BUCKETLIST NAME" />
         <div class="popupList"> <ul class="dashUl" id="ulBLChallenges"></ul></div><br />
 
-        <select class="dashSelect" name="ManBLselect" id="ManBLselect">
-            <option selected="selected">Add challenge</option>
-            <option value="Climb">Climb a big rock</option>
-            <option value="Sleep">Sleep</option>
-            <option value="Milk a cow">Milk a cow</option>
-            <option value="Grow a tree">Grow a tree</option>
-            <option value="Fly a pinkmobile">Fly a pinkmobile</option>
-        </select>
+        <select class="dashSelect" name="ManBLselect" id="ManBLselect"></select>
         <button onclick="" id="saveBtn">SAVE</button>
     </div>
 </div>
-<div id="popUpReviewSuggestions" hidden="hidden">
 
+<div id="popUpReviewSuggestions" hidden="hidden">
     <div class="dashPopupHeader">
         <h1>REVIEW SUGGESTIONS</h1>
         <button class="btnDash btnHead" id="closeReview"><img class="btnPopImg" src="~/Content/Assets/buttonX.png" /></button>
@@ -104,25 +111,26 @@
 </div>
 <div id="editUser" hidden="hidden">
     <div class="dashPopupHeader">
-        <h1>EDIT PROFILE</h1>
+        <h1 id="userPopupHeading" >CREATE PROFILE</h1>
         <button class="btnDash btnHead" id="closeEditUser"><img class="btnPopImg" src="~/Content/Assets/buttonX.png" /></button>
     </div>
-    <div class="dashPopupWindow">
-        <input class="popupEdtText" type="text" placeholder="FIRST NAME" />
-
-        <input class="popupEdtText" type="text" placeholder="SURNAME" />
-        <input class="popupEdtText" type="text" placeholder="USERNAME" />
-        <input class="popupEdtText" type="text" placeholder="CONTACT" />
+    <div id="userPopupWindow" class="dashPopupWindow">
+        <input id="advFName" required class="popupEdtText" type="text" placeholder="FIRST NAME" />
+        <input id="advSName" required class="popupEdtText" type="text" placeholder="SURNAME" />
+        <input id="advEmail" required class="popupEdtText" type="text" placeholder="USERNAME" />
+        <input id="advContact" required class="popupEdtText" type="text" placeholder="CONTACT" />
 
         <label class="popUpLabel">Admin</label><br />
-        <input type="checkbox" /><br />
+                                               <label class="switch">
+                                                   <input id="advAdmin" type="checkbox" />
+                                                   <span class="slider round"></span>
+                                               </label><br />
         <label class="popUpLabel">Enabled</label><br />
-        <input type="checkbox" />
-
-
-
-
-        <button onclick="" id="saveBtn">UPDATE</button>
+                                                 <label class="switch">
+                                                     <input id="advActive" type="checkbox" />
+                                                     <span class="slider round"></span>
+                                                 </label>
+        <button onclick="saveUser()" id="saveBtn">SAVE</button>
     </div>
 </div>
 
@@ -158,6 +166,8 @@
         dialogClass: "popUp"
     });
     $("#closeManBL").click(function () {
+        $("#ulBLChallenges").html("");
+        $("#manBlName").val("");
         $("#popUpManBL").dialog('close');
     });
 
@@ -180,6 +190,17 @@
         $("#editUser").dialog('open');
     });
     $("#closeEditUser").click(function () {
+         
         $("#editUser").dialog('close');
+         $("#advFName").val("");
+        $("#advSName").val("");
+        $("#advEmail").val("");
+        $("#advContact").val("");  
+    });
+    $("#popUpReport").dialog({
+        autoOpen: false, modal: true, resizable: false, draggable: false
+    });
+    $("#closeReport").click(function () {
+        $("#popUpReport").dialog('close');
     });
 </script>

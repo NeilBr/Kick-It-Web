@@ -141,6 +141,8 @@ namespace Kick_It_Web.Utilities
 
         }
 
+       
+
         public List<ChallengeSuggestion> getChallenges()
         {
             MySqlConnection connection = Connect();
@@ -195,6 +197,46 @@ namespace Kick_It_Web.Utilities
             return blList;
 
         }
+        public Boolean deleteUser(string adv_id)
+        {
+            MySqlConnection connection = Connect();
+            MySqlCommand command = connection.CreateCommand();
+            connection.Open();
+            command.CommandText = "Delete FROM adventurers WHERE adv_id = " + adv_id +";";
 
+           command.ExecuteNonQuery();
+            connection.Close();
+            return true;
+        }
+
+        public Adventurer getAdventurer(string adv_id)
+        {
+            MySqlConnection connection = Connect();
+            MySqlCommand command = connection.CreateCommand();
+            connection.Open();
+            command.CommandText = "Select * FROM adventurers WHERE adv_id = " + adv_id + ";";
+
+            MySqlDataReader reader = command.ExecuteReader();
+            Adventurer curAdv = new Adventurer();
+            while (reader.Read())
+            {
+               
+                curAdv.adv_id = (double)reader["adv_id"];
+                curAdv.adv_firstname = (string)reader["adv_firstName"];
+                curAdv.adv_surname = (string)reader["adv_surname"];
+                curAdv.adv_telephone = (string)reader["adv_telephone"];
+                curAdv.adv_totalPoints = (double)reader["adv_totalPoints"];
+                curAdv.adv_profilepic = (string)reader["adv_profilepic"];
+                curAdv.adv_password = (string)reader["adv_password"];
+                curAdv.adv_email = (string)reader["adv_email"];
+                curAdv.adv_active = (bool)reader["adv_active"];
+                curAdv.adv_admin = (bool)reader["adv_admin"];
+
+
+    
+            }
+            connection.Close();
+            return curAdv;
+        }
     }
 }

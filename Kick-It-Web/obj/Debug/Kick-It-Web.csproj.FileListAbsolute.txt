@@ -257,3 +257,9 @@ C:\Users\neilb\Documents\NMU 2019\Kick-It-Web\Kick-It-Web\obj\Debug\Kick-It-Web.
 C:\Users\neilb\Documents\NMU 2019\Kick-It-Web\Kick-It-Web\obj\Debug\Kick-It-Web.csproj.CopyComplete
 C:\Users\neilb\Documents\NMU 2019\Kick-It-Web\Kick-It-Web\obj\Debug\Kick-It-Web.dll
 C:\Users\neilb\Documents\NMU 2019\Kick-It-Web\Kick-It-Web\obj\Debug\Kick-It-Web.pdb
+C:\Users\neilb\Documents\NMU 2019\Team eit\Kick-It-Web\Kick-It-Web\bin\AWSSDK.Core.dll
+C:\Users\neilb\Documents\NMU 2019\Team eit\Kick-It-Web\Kick-It-Web\bin\AWSSDK.S3.dll
+C:\Users\neilb\Documents\NMU 2019\Team eit\Kick-It-Web\Kick-It-Web\bin\AWSSDK.Core.pdb
+C:\Users\neilb\Documents\NMU 2019\Team eit\Kick-It-Web\Kick-It-Web\bin\AWSSDK.Core.xml
+C:\Users\neilb\Documents\NMU 2019\Team eit\Kick-It-Web\Kick-It-Web\bin\AWSSDK.S3.pdb
+C:\Users\neilb\Documents\NMU 2019\Team eit\Kick-It-Web\Kick-It-Web\bin\AWSSDK.S3.xml
